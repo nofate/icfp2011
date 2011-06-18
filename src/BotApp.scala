@@ -1,3 +1,5 @@
+package name.nofate.icfp2011
+
 import scala.Predef
 
 class Card(val card: String) {
@@ -74,13 +76,19 @@ object BotApp {
 	slot ->: Cards.Get
 	slot ->: Cards.Zero
   }
-  
-  def store(slot: Int, v: Int) {
-	reset(slot)
-	slot -> Cards.Zero
-	
-	val div = (a: Int) => Unit = {
-	  div
+    
+  def store(slot: Int, a: Int) {
+	if (a != 0) {
+	  var a1 = { if (a % 2 == 1) { a - 1 }	else { a / 2} }
+	  store(slot, a1)
+	  
+	  if (a % 2 == 1) {
+		slot <-: Cards.Succ
+	  } else {
+		slot <-: Cards.Dbl
+	  }
+	} else {
+	  slot ->: Cards.Zero
 	}
   }
   
@@ -138,18 +146,8 @@ object BotApp {
   }
   
   def strategy2() {
-	
-	2 ->: Cards.Zero
-	2 <-: Cards.Succ
-	
-	for (i <- 0 until 13) {
-	  2 <-: Cards.Dbl
-	}
-	
-	func(1, Cards.Attack)	
-	push_0(1)
-	push_0(1)
-	push_field(1, 2)
+	reset(1)
+	store(1, 11)	
   }
   
   def main(args:Array[String]) {

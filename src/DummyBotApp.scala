@@ -1,3 +1,5 @@
+package name.nofate.icfp2011;
+
 import scala.Predef
 
 object Cardz {
