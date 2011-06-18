@@ -1,0 +1,3 @@
+##!/bin/sh
+fsc ./project/src/BotApp.scala
+scala BotApp $1

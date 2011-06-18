@@ -1,0 +1,3 @@
+##!/bin/sh
+fsc ./project/src/DummyBotApp.scala
+scala DummyBotApp $1
