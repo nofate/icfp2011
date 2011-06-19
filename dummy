@@ -1,3 +1,3 @@
 ##!/bin/sh
-fsc ./project/src/DummyBotApp.scala
-scala DummyBotApp $1
+# fsc ./project/src/DummyBotApp.scala
+scala name.nofate.icfp2011.DummyBotApp $1

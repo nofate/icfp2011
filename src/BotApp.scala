@@ -91,13 +91,7 @@ object BotApp {
 	  slot ->: Cards.Zero
 	}
   }
-  
-  def initialize(a: Array[(Any, Int)]) {
-	for (i <- 0.until(a.length)) {
-	  //a.update(i, (Cards.I, 10000))
-	}
-  }
-  
+ 
   def opponentTurn() {
 	var slot = ""
 	var card = ""
@@ -110,53 +104,37 @@ object BotApp {
 	  card = readLine()
 	}
   } 
-
-  def strategy1() {
-	val powerSlot = 1
-	val cmdSlot = 0
+  
+ 
+  def goodStrategy() {
+	0 ->: Cards.Dec
 	
-	powerSlot ->: Cards.Zero
-	powerSlot <-: Cards.Succ
-	
-	for (i <- 0 until 13) {
-	  powerSlot <-: Cards.Dbl
+	for (i <- 1 to 195) {
+	  0 <-: Cards.K
+	  0 <-: Cards.S
+	  0 ->: Cards.Succ
+	  0 <-: Cards.S
+	  0 ->: Cards.Dec
 	}
 	
-	cmdSlot ->: Cards.Attack
-	//первый аргумент
-	cmdSlot <-: Cards.K
-	cmdSlot <-: Cards.S
-	cmdSlot ->: Cards.I
-	cmdSlot ->: Cards.Zero
-	//второй аргумент
-	cmdSlot <-: Cards.K
-	cmdSlot <-: Cards.S
-	cmdSlot ->: Cards.Succ
-	cmdSlot ->: Cards.Zero
-	//третий аргумент
-	cmdSlot <-: Cards.K
-	cmdSlot <-: Cards.S
-	cmdSlot ->: Cards.Get
-	  cmdSlot <-: Cards.K
-	  cmdSlot <-: Cards.S
-	  cmdSlot ->: Cards.Succ
-	  cmdSlot ->: Cards.Zero
+	1 ->: Cards.Get
+	1 ->: Cards.Zero
 	
-	  
-  }
+	0 ->: Cards.Zero
+		
+	for (i <- 1 to 99999) {
+	  0 ->: Cards.Zero
+	  0 <-: Cards.Succ
+	  0 <-: Cards.Get
+	  0 ->: Cards.Zero
+	}
   
-  def strategy2() {
-	reset(1)
-	store(1, 11)	
+	while (1 == 1) {
+	  0 <-: Cards.Put
+	}
   }
   
   def main(args:Array[String]) {
-	val mySlots = new Array[(Any, Int)](256)
-	val opSlots = new Array[(Any, Int)](256)
-	
-	
-	initialize(mySlots)
-	initialize(opSlots) 
 
 	val player = { 
 	  if (args(0) == "1") { 1 }   
@@ -167,7 +145,7 @@ object BotApp {
 	  opponentTurn();
 	}
 	
-	strategy2()
+	goodStrategy()
   }
 }
 
