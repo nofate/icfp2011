@@ -1,3 +1,2 @@
-##!/bin/sh
-# fsc ./src/BotApp.scala
+#!/bin/sh
 scala name.nofate.icfp2011.BotApp $1

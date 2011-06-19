@@ -105,14 +105,18 @@ object BotApp {
 	}
   } 
   
- 
+  def reviveZero() {
+	117 ->: Cards.Revive
+	117 ->: Cards.Zero
+  }
+  
   def goodStrategy() {
-	
+
 	0 ->: Cards.S
 	0 ->: Cards.Revive
 	0 ->: Cards.Dec
 	
-	for (i <- 1 to 142) {
+	for (i <- 1 to 141) {
 	  0 <-: Cards.K
 	  0 <-: Cards.S
 	  0 ->: Cards.Succ
@@ -122,21 +126,43 @@ object BotApp {
 	  0 ->: Cards.Dec
 	}
 	
-	1 ->: Cards.Get
-	1 ->: Cards.Zero
+	for (i <- 1 to 10000) {
+	  111 ->: Cards.Get
+	  111 ->: Cards.Zero
+	  111 ->: Cards.Zero
+	  
+	  if (i % 500 == 0) {reviveZero()}
+	}
 	
-	0 ->: Cards.Zero
-		
-	for (i <- 1 to 99999) {
-	  0 ->: Cards.Zero
-	  0 <-: Cards.Succ
-	  0 <-: Cards.Get
-	  0 ->: Cards.Zero
+	0 <-: Cards.K
+	0 <-: Cards.S
+	0 ->: Cards.Get
+	0 <-: Cards.K
+	0 <-: Cards.S
+	0 ->: Cards.Succ
+	
+	1 ->: Cards.Zero
+	1 <-: Cards.Succ
+	1 <-: Cards.Dbl
+	1 <-: Cards.Succ
+	1 <-: Cards.Dbl
+	1 <-: Cards.Succ
+	1 <-: Cards.Dbl
+	1 <-: Cards.Dbl
+	1 <-: Cards.Dbl
+	1 <-: Cards.Succ
+	1 <-: Cards.Dbl
+	
+	for (i <- 1 to 10000) {
+	  111 ->: Cards.Get
+	  111 ->: Cards.Zero
+	  111 ->: Cards.Zero
+	  
+	  if (i % 500 == 0) {reviveZero()}
 	}
-  
-	while (1 == 1) {
-	  0 <-: Cards.Put
-	}
+	
+	1 <-: Cards.Put
+	1 ->: Cards.Zero
   }
   
   def main(args:Array[String]) {
@@ -150,7 +176,9 @@ object BotApp {
 	  opponentTurn();
 	}
 	
-	goodStrategy()
+	while (1 == 1) {
+	  goodStrategy()
+	}
   }
 }
 
