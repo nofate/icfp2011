@@ -138,7 +138,7 @@ object BotApp {
   }
   
   def run10000() {
-	for (i <- 1 to 10000) {
+	for (i <- 1 to 7000) {
 	  111 ->: Cards.Get
 	  111 ->: Cards.Zero
 	  111 ->: Cards.Zero
@@ -252,6 +252,67 @@ object BotApp {
 	2 ->: Cards.Zero
   }
   
+  def zombieRaid() {
+	1 <-: Cards.Put
+	1 ->: Cards.Get
+	1 ->: Cards.Zero
+	
+	0 <-: Cards.Put
+	0 ->: Cards.Zero
+	
+	2 ->: Cards.Zombie
+	2 ->: Cards.Zero
+	
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Get
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Succ
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Succ
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Succ
+	
+	//loop
+	for (i <- 1 to 254) {
+	  0 <-: Cards.Succ
+	  
+	  3 <-: Cards.Put
+	  3 ->: Cards.Help
+	  3 <-: Cards.K
+	  3 <-: Cards.S
+	  3 ->: Cards.Get
+	  3 <-: Cards.S
+	  3 ->: Cards.Get
+	  3 ->: Cards.Zero
+	  3 <-: Cards.K
+	  3 <-: Cards.S
+	  3 <-: Cards.K
+	  3 <-: Cards.S
+	  3 ->: Cards.K
+	  3 <-: Cards.K
+	  3 <-: Cards.S
+	  3 ->: Cards.Get
+	  3 <-: Cards.K
+	  3 <-: Cards.S
+	  3 ->: Cards.Succ
+	  3 ->: Cards.Zero
+	  
+	  5 ->: Cards.Zero
+	  5 <-: Cards.Succ
+	  5 <-: Cards.Succ
+	  5 <-: Cards.Get
+	  
+	  6 ->: Cards.Dec
+	  6 ->: Cards.Zero
+	  5 ->: Cards.Zero
+	  
+	}
+  }
+  
   def main(args:Array[String]) {
 
 	val player = { 
@@ -264,6 +325,7 @@ object BotApp {
 	}
 	
 	kill0_255()
+	zombieRaid()
 	goodStrategy()
 	
 	56 ->: Cards.I
