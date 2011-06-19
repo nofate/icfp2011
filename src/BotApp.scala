@@ -78,6 +78,8 @@ object BotApp {
   }
     
   def store(slot: Int, a: Int) {
+	reset(slot)
+	
 	if (a != 0) {
 	  var a1 = { if (a % 2 == 1) { a - 1 }	else { a / 2} }
 	  store(slot, a1)
@@ -110,13 +112,12 @@ object BotApp {
 	117 ->: Cards.Zero
   }
   
-  def goodStrategy() {
-
+  def prepareGoodStrategy() {
 	0 ->: Cards.S
 	0 ->: Cards.Revive
 	0 ->: Cards.Dec
 	
-	for (i <- 1 to 141) {
+	for (i <- 1 to 84) {
 	  0 <-: Cards.K
 	  0 <-: Cards.S
 	  0 ->: Cards.Succ
@@ -125,22 +126,28 @@ object BotApp {
 	  0 <-: Cards.S
 	  0 ->: Cards.Dec
 	}
-	
-	for (i <- 1 to 10000) {
+  }
+  
+  def run10000() {
+	for (i <- 1 to 1) {
 	  111 ->: Cards.Get
 	  111 ->: Cards.Zero
 	  111 ->: Cards.Zero
 	  
 	  if (i % 500 == 0) {reviveZero()}
 	}
-	
+  }
+  
+  def modifyStrategy() {
 	0 <-: Cards.K
 	0 <-: Cards.S
 	0 ->: Cards.Get
 	0 <-: Cards.K
 	0 <-: Cards.S
 	0 ->: Cards.Succ
-	
+  }
+  
+  def store128() {
 	1 ->: Cards.Zero
 	1 <-: Cards.Succ
 	1 <-: Cards.Dbl
@@ -152,17 +159,25 @@ object BotApp {
 	1 <-: Cards.Dbl
 	1 <-: Cards.Succ
 	1 <-: Cards.Dbl
+  }
+  
+  def goodStrategy() {
+
+	prepareGoodStrategy()
+	modifyStrategy()
 	
-	for (i <- 1 to 10000) {
-	  111 ->: Cards.Get
-	  111 ->: Cards.Zero
-	  111 ->: Cards.Zero
-	  
-	  if (i % 500 == 0) {reviveZero()}
-	}
+	store(1, 171)
+	run10000()
+	store(1, 86)
+	run10000()
+	store(1, 1)
+	run10000()
 	
-	1 <-: Cards.Put
-	1 ->: Cards.Zero
+	
+	
+	/*while (1==1) {
+	  45 ->: Cards.I
+	}*/
   }
   
   def main(args:Array[String]) {
@@ -176,9 +191,8 @@ object BotApp {
 	  opponentTurn();
 	}
 	
-	while (1 == 1) {
-	  goodStrategy()
-	}
+	goodStrategy()
+	
   }
 }
 
