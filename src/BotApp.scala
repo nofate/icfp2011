@@ -8,6 +8,7 @@ class Card(val card: String) {
 	println(card)
 	println(slot)
 	BotApp.opponentTurn()
+	BotApp.incCnt()
   }
   
   def ->:(slot: Int) {
@@ -15,6 +16,7 @@ class Card(val card: String) {
 	println(slot)
 	println(card)
 	BotApp.opponentTurn()
+	BotApp.incCnt()
   }
 }
 
@@ -40,6 +42,12 @@ object Cards {
 }
 
 object BotApp {
+  var cnt = 0;
+  
+  def incCnt() {
+	cnt = cnt + 1
+	//if (cnt == 659) { System.exit(0) } 
+  }
   
   def reset(slot: Int) {
 	slot <-: Cards.Put
@@ -113,6 +121,7 @@ object BotApp {
   }
   
   def prepareGoodStrategy() {
+	0 <-: Cards.Put
 	0 ->: Cards.S
 	0 ->: Cards.Revive
 	0 ->: Cards.Dec
@@ -129,7 +138,7 @@ object BotApp {
   }
   
   def run10000() {
-	for (i <- 1 to 1) {
+	for (i <- 1 to 10000) {
 	  111 ->: Cards.Get
 	  111 ->: Cards.Zero
 	  111 ->: Cards.Zero
@@ -175,9 +184,72 @@ object BotApp {
 	
 	
 	
-	/*while (1==1) {
-	  45 ->: Cards.I
-	}*/
+	while (1==1) {
+	  store(1, 171)
+	  run10000()
+	  store(1, 86)
+	  run10000()
+	  store(1, 1)
+	  run10000()
+	}
+  }
+  
+  def kill0_255() {
+	1 ->: Cards.Zero
+	2 ->: Cards.Zero
+	2 <-: Cards.Succ
+	
+	2 <-: Cards.Attack
+	1 <-: Cards.Attack
+	
+	0 ->: Cards.Zero
+	0 <-: Cards.Succ
+	0 <-: Cards.Succ
+	0 <-: Cards.Succ
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl //48
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl
+	0 <-: Cards.Dbl //6144
+	
+	2 <-: Cards.S
+	2 ->: Cards.Get
+	1 <-: Cards.S
+	1 ->: Cards.Get
+	
+	2 ->: Cards.Zero
+	1 ->: Cards.Zero
+	
+	2 ->: Cards.Zombie
+	2 ->: Cards.Zero
+	
+	1 ->: Cards.Help
+	1 ->: Cards.Zero
+	1 ->: Cards.Zero
+	
+	1 <-: Cards.K
+	1 <-: Cards.S
+	1 <-: Cards.K
+	1 <-: Cards.S
+	1 ->: Cards.K
+	1 <-: Cards.K
+	1 <-: Cards.S
+	1 ->: Cards.Get
+	1 ->: Cards.Zero
+	
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Get
+	2 <-: Cards.K
+	2 <-: Cards.S
+	2 ->: Cards.Succ
+	2 ->: Cards.Zero
   }
   
   def main(args:Array[String]) {
@@ -191,7 +263,10 @@ object BotApp {
 	  opponentTurn();
 	}
 	
+	kill0_255()
 	goodStrategy()
+	
+	56 ->: Cards.I
 	
   }
 }
