@@ -107,12 +107,17 @@ object BotApp {
   
  
   def goodStrategy() {
+	
+	0 ->: Cards.S
+	0 ->: Cards.Revive
 	0 ->: Cards.Dec
 	
-	for (i <- 1 to 195) {
+	for (i <- 1 to 142) {
 	  0 <-: Cards.K
 	  0 <-: Cards.S
 	  0 ->: Cards.Succ
+	  0 <-: Cards.S
+	  0 ->: Cards.Revive
 	  0 <-: Cards.S
 	  0 ->: Cards.Dec
 	}
